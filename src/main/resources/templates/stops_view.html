@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<h1>Trading Dashboard</h1>
+	<img th:src="@{/images/growth-logo.jpg}" />
+	<form action="#" th:action="@{/stops/save}" th:object="${form}"
+		method="post">
+		<div class="container">
+		  <a th:href="@{|/stops/add|}">
+		       <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 
+		       Nuevo Stop </button> </a> 
+		  <a th:href="@{|/stops/sync|}">
+		       <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> 
+		       Sincronizar </button> </a>      
+		  <table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Ticker</th>
+						<th>Stop Tipo</th>
+						<th>Limite</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Ejecución</th>
+						<th>Estado</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="stop : ${stops}">
+						<td><span th:text="${stop.ticker.tckName}"> Ticker </span></td>
+						<td><span th:text="${stop.stp_type}"> Tipo </span></td>
+						<td><span th:text="${stop.stp_limit}"> Limit </span></td>
+						<td><span th:text="${stop.stp_price}"> Price </span></td>
+						<td><span th:text="${stop.stp_qty}"> Qty </span></td>
+						<td><span th:text="${stop.stp_exec_type}"> Ejecución </span></td>
+						<td><span th:text="${stop.stp_status}"> Estado </span></td>
+						<td><a th:href="@{|/stops/delete/${stop.stp_id}|}">
+						       <button type="button" class="btn btn-warning"> 
+						       <span class="glyphicon glyphicon-trash"></span></button> </a>
+						</td>
+						<td><a th:href="@{|/stops/edit/${stop.stp_id}|}">
+						       <button type="button" class="btn btn-info"> 
+						       <span class="glyphicon glyphicon-edit"></span></button> </a>
+						</td>
+						<td th:if="${stop.stp_status == 'OK'}"><a th:href="@{|/stops/execute/${stop.stp_id}|}">
+						       <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-usd" ></span> 
+						       Ejecutar </button> </a>
+						</td>
+						<td th:if="${stop.stp_status != 'OK'}"><span></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

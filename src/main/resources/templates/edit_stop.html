@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<h1>Nuevo Stop</h1>
+	<img th:src="@{/images/growth-logo.jpg}" />
+	<span th:if="${errorMessage}"  th:text="${errorMessage}">Error</span>
+	<form action="#" th:action="@{|${stop.stp_id}|}" th:object="${stop}" method="post">
+		<div class="form-horizontal">
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="Ticker">Ticker</label>
+				<div class="col-md-6">					
+					<select  th:field="*{stpTckId}" class="form-control col-md-3" >
+						<option value=-1>Please select...</option>
+			            <option th:each="tck : ${tickers}"
+						         th:value="${tck.tck_id}"
+						         th:utext="${tck.tckName}"/>
+					</select> 
+				</div>
+				<span th:if="${#fields.hasErrors('stpTckId')}" th:errors="*{stpTckId}" class="text-danger"></span>
+			</div>
+			
+			<div class="form-group"> 
+				<label class="control-label col-sm-2" for="stp_type">Stop Tipo</label>
+				<div class="col-md-6"> 
+					<select  th:field="*{stp_type}" class="form-control col-md-4">
+					    <option value="MARKET">MARKET</option>
+					    <option value="LIMIT">LIMIT</option>
+					</select>
+				</div> 
+				<span th:if="${#fields.hasErrors('stp_type')}" th:errors="*{stp_type}" class="text-danger"></span>
+			</div> 
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="stp_limit">Limite</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{stp_limit}" id="stp_limit" placeholder="stp_limit" class="form-control col-md-4">
+				</div> 
+				<span th:if="${#fields.hasErrors('stp_limit')}" th:errors="*{stp_limit}" class="text-danger"></span> 
+			</div>
+			 
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="stp_price">Precio</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{stp_price}" id="stp_price" placeholder="stp_price" class="form-control">
+				</div> 
+				<span th:if="${#fields.hasErrors('stp_price')}" th:errors="*{stp_price}" class="text-danger"></span> 
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="stp_qty">Cantidad</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{stp_qty}" id="stp_qty" placeholder="stp_qty" class="form-control">
+				</div> 
+				<span th:if="${#fields.hasErrors('stp_qty')}" th:errors="*{stp_qty}" class="text-danger"></span> 
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="Ticker">Ejecución</label>
+				<div class="col-md-6">					
+					<select  th:field="*{stp_exec_type}" class="form-control col-md-3">
+						<option value="MANUAL">MANUAL</option>
+						<option value="AUTO">AUTO</option>
+					</select> 
+				</div>
+				<span th:if="${#fields.hasErrors('stp_exec_type')}" th:errors="*{stp_exec_type}" class="text-danger"></span>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="stp_status">Estado</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{stp_status}" id="stp_status" placeholder="stp_status" class="form-control" readonly>
+				</div> 
+				<span th:if="${#fields.hasErrors('stp_status')}" th:errors="*{stp_status}" class="text-danger"></span> 
+			</div>
+			
+			<div class="form-group">
+            	<div class="col-xs-offset-6 col-xs-9">
+					<button type="submit" class="btn btn-primary" title="Grabar">
+	                    <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+	                </button>
+				</div>
+			</div>			
+		</div>
+	</form>
+
+</body>
+</html>
