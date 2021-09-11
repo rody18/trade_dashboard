@@ -1,8 +1,8 @@
-package trade.data.repositories;
+package dashboard.data.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import trade.data.models.Parameter;
+import dashboard.data.models.Parameter;
 
 public interface ParameterRepository extends CrudRepository<Parameter, Long>{
 

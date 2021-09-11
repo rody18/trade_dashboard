@@ -1,17 +1,16 @@
-package trade;
+package dashboard;
 
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-import trade.services.TdaService;
+import dashboard.services.TdaService;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "traderapi", "dashboard"} )
 public class DashboardCloudApplication  implements CommandLineRunner  {
 
 	@Autowired

@@ -1,7 +1,8 @@
-package trade.data.repositories;
+package dashboard.data.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import trade.data.models.Ticker;
+
+import dashboard.data.models.Ticker;
 
 public interface TickerRepository extends CrudRepository<Ticker, Long> {
 

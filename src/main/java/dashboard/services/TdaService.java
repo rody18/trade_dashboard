@@ -1,4 +1,4 @@
-package trade.services;
+package dashboard.services;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,14 +18,16 @@ import com.studerw.tda.model.account.Instrument;
 import com.studerw.tda.model.account.Order;
 import com.studerw.tda.model.account.OrderLegCollection;
 import com.studerw.tda.model.account.OrderLegCollection.Instruction;
+
+import dashboard.data.models.Parameter;
+import dashboard.data.models.Stop;
+import dashboard.data.models.Ticker;
+import dashboard.data.repositories.*;
+
 import com.studerw.tda.model.account.OrderStrategyType;
 import com.studerw.tda.model.account.OrderType;
 
 import lombok.extern.slf4j.Slf4j;
-import trade.data.models.Parameter;
-import trade.data.models.Stop;
-import trade.data.models.Ticker;
-import trade.data.repositories.*;
 
 
 @Slf4j

@@ -1,4 +1,4 @@
-package trade.data.models;
+package dashboard.data.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

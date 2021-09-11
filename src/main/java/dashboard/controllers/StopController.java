@@ -1,4 +1,4 @@
-package trade.controllers;
+package dashboard.controllers;
 
 import java.util.Optional;
 
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
+import dashboard.data.models.Stop;
+import dashboard.data.repositories.StopRepository;
+import dashboard.data.repositories.TickerRepository;
+import dashboard.services.TdaService;
 import lombok.extern.slf4j.Slf4j;
-import trade.data.models.Stop;
-import trade.data.repositories.StopRepository;
-import trade.data.repositories.TickerRepository;
-import trade.services.TdaService;
 
 @Controller
 @Slf4j
