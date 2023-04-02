@@ -32,25 +32,25 @@
 				<tbody>
 					<tr th:each="stop : ${stops}">
 						<td><span th:text="${stop.ticker.tckName}"> Ticker </span></td>
-						<td><span th:text="${stop.stp_type}"> Tipo </span></td>
-						<td><span th:text="${stop.stp_limit}"> Limit </span></td>
-						<td><span th:text="${stop.stp_price}"> Price </span></td>
-						<td><span th:text="${stop.stp_qty}"> Qty </span></td>
-						<td><span th:text="${stop.stp_exec_type}"> Ejecución </span></td>
-						<td><span th:text="${stop.stp_status}"> Estado </span></td>
-						<td><a th:href="@{|/stops/delete/${stop.stp_id}|}">
+						<td><span th:text="${stop.getStpType}"> Tipo </span></td>
+						<td><span th:text="${stop.getStpLimit}"> Limit </span></td>
+						<td><span th:text="${stop.getStpPrice}"> Price </span></td>
+						<td><span th:text="${stop.getStpQty}"> Qty </span></td>
+						<td><span th:text="${stop.getStpExecType}"> Ejecución </span></td>
+						<td><span th:text="${stop.getStpStatus}"> Estado </span></td>
+						<td><a th:href="@{|/stops/delete/${stop.getStpId}|}">
 						       <button type="button" class="btn btn-warning"> 
 						       <span class="glyphicon glyphicon-trash"></span></button> </a>
 						</td>
-						<td><a th:href="@{|/stops/edit/${stop.stp_id}|}">
+						<td><a th:href="@{|/stops/edit/${stop.getStpId}|}">
 						       <button type="button" class="btn btn-info"> 
 						       <span class="glyphicon glyphicon-edit"></span></button> </a>
 						</td>
-						<td th:if="${stop.stp_status == 'OK'}"><a th:href="@{|/stops/execute/${stop.stp_id}|}">
+						<td th:if="${stop.getStpStatus == 'OK'}"><a th:href="@{|/stops/execute/${stop.getStpId}|}">
 						       <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-usd" ></span> 
 						       Ejecutar </button> </a>
 						</td>
-						<td th:if="${stop.stp_status != 'OK'}"><span></span>
+						<td th:if="${stop.getStpStatus != 'OK'}"><span></span>
 						</td>
 					</tr>
 				</tbody>
